@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SportShop.Models.Manufacturer>
+
+@foreach (var m in Model)
+{
+    <div>
+        <h3>@m.Name</h3>
+        <h5>@m.Country</h5>
+    </div>
+
+}
+<div>
+    @await Component.InvokeAsync("CategoryList")
+</div>
