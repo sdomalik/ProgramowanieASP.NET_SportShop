@@ -19,7 +19,7 @@ namespace SportShop.Models
             ctx.SaveChanges();
         }
 
-        public void SaveProduct(Product product)
+        public void Save(Product product)
         {
             if (product.ProductId == 0)
             {
