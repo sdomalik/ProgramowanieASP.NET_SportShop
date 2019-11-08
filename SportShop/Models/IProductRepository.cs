@@ -8,5 +8,6 @@ namespace SportShop.Models
     public interface IProductRepository
     {
         IQueryable<Product> Products { get; }
+        void Save(Product product);
     }
 }
