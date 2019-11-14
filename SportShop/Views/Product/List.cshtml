@@ -1,12 +1,16 @@
 ﻿@model IEnumerable<Product>
 
-@foreach (var p in Model)
-{
-    <div>
-        <h3>@p.Name</h3>
-        @p.Description
-        <h4>@p.Price.ToString("c")</h4>
-        <h5>Ilość: @p.Quantity.ToString()</h5>
+    <div class="d-block"   >
+
+        @foreach (var p in Model)
+        {
+            <div class="bg-light text-lg-center float-left w-50 p-1 border"  >
+                <p class="card-header font-weight-bold">@p.Name</p>
+                <p class="card-body">@p.Description</p>
+                <p class="card-body">@p.Price.ToString("c")</p>
+                <p class="card-footer">Ilość: @p.Quantity.ToString()</p>
+            </div>
+        }
+
     </div>
-}
 

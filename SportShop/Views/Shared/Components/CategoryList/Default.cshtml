@@ -1,9 +1,12 @@
 ﻿@model IEnumerable<string>
 
-<h3>Product Category:</h3>
-<ul>
-    @foreach (var category in Model)
-    {
-        <li><a asp-controller="Product" asp-action="List" asp-route-category="@category">@category</a> </li>
-    }
-</ul>
+<div class="card d-flex float-left align-items-center w-100 mt-3 mb-3 p-2">
+    <p class="card-header">Product Categories:</p>
+    <ul class="card-body">
+        @foreach (var category in Model)
+        {
+           <button><a asp-controller="Product" asp-action="List" asp-route-category="@category">@category</a> </button>
+        
+        }
+    </ul>
+</div>
