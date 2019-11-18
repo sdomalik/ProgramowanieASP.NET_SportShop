@@ -1,7 +1,32 @@
-﻿
+﻿@model IEnumerable<Product>
+
 @{
     ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
 }
 
-<h2>Index</h2>
+<h2 class="text-center mb-5 mt-3">Wszystkie produkty:</h2>
+<div>
+
+    @foreach (var p in Model)
+    {
+    <div class="bg-light text-lg-center p-1 border d-inline-flex w-100">
+        <p class="card-header font-weight-bold w-25">@p.Name</p>
+        <p class="card-body w-25">@p.Description</p>
+        <p class="card-body">@p.Price.ToString("c")</p>
+        <p class="card-body">Ilość: @p.Quantity.ToString()</p>
+        <form class="p-4" asp-action="Delete" method="post" asp-route-id="@p.ProductId">
+            <a asp-action="Edit" class="btn btn-dark"
+               asp-route-productId="@p.ProductId">
+                Edit
+            </a>
+            <button type="submit" class="btn btn-dark">
+                Delete
+            </button>
+        </form>
+    </div>
+    }
+
+</div>
+
 

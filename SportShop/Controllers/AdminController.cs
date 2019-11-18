@@ -25,19 +25,34 @@ namespace SportShop.Controllers
         {
             return View(_productRepository.Products.FirstOrDefault(a => a.ProductId == id));
         }
-        public IActionResult Create()
-        {
-            return View("Edit", new Product());
-        }
+
+        [HttpPost]
         public IActionResult Save(Product product)
         {
             if (ModelState.IsValid)
             {
-                _productRepository.Save(product);
+                _productRepository.SaveProduct(product);
                 TempData["ProductSaveSucces"] = "Product Saved";
             }
             return RedirectToAction("Index", product);
-
         }
+
+        public IActionResult Create()
+        {
+            return View("Edit", new Product());
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            Product _productDeleted = _productRepository.DeleteProduct(id);
+
+            if (_productDeleted != null)
+            {
+                TempData["ProductDeleteSucces"] = "Product Deleted";
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -45,7 +45,7 @@ namespace SportShop
             );*/
             app.UseMvc(routes => routes.MapRoute(
                 name: "default",
-                template: "{controller=Product}/{action=List}/{id?}"
+                template: "{controller=Admin}/{action=Index}/{id?}"
                 )
             );
             SeedData.EnsurePopulated(app);

@@ -13,13 +13,7 @@ namespace SportShop.Models
             this.ctx = ctx;
         }
 
-       public void DeleteProduct(int id)
-        {
-            ctx.Remove(ctx.Products.FirstOrDefault(a => a.ProductId == id));
-            ctx.SaveChanges();
-        }
-
-        public void Save(Product product)
+        public void SaveProduct(Product product)
         {
             if (product.ProductId == 0)
             {
@@ -31,6 +25,19 @@ namespace SportShop.Models
             }
             ctx.SaveChanges();
         }
+
+        public Product DeleteProduct(int id)
+        {
+            Product product = ctx.Products.FirstOrDefault(a => a.ProductId == id);
+
+            if (product != null)
+            {
+                ctx.Products.Remove(product);
+                ctx.SaveChanges();
+            }
+            return product;
+        }
+
         public IQueryable<Product> Products => ctx.Products;
 
     }
