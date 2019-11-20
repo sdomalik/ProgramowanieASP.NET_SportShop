@@ -5,34 +5,36 @@
     Layout = "_AdminLayout";
 
 }
-    <div class="row">
-        <div class="col-4">
-            <form asp-action="Save">
-                <div class="form-group">
-                    <label asp-for="Name" class="custom-control-label">Produkt</label>
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                    <input asp-for="Name" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="custom-control-label">Opis</label>
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                    <input asp-for="Description" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Category" class="custom-control-label">Kategoria</label>
-                    <span asp-validation-for="Category" class="text-danger"></span>
-                    <input asp-for="Category" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Price" class="custom-control-label">Cena</label>
-                    <span asp-validation-for="Price" class="text-danger"></span>
-                    <input asp-for="Price" class="form-control" />
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-primary" >Zapisz</button>
-                    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
-                </div>
-            </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form asp-action="Save" method="post">
+                    <div class="form-group">
+                        <label asp-for="Name" class="custom-control-label">Produkt</label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <input asp-for="Name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="custom-control-label">Opis</label>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                        <input asp-for="Description" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Category" class="custom-control-label">Kategoria</label>
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                        <input asp-for="Category" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="custom-control-label">Cena</label>
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                        <input asp-for="Price" class="form-control" />
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit">Zapisz</button>
+                        <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

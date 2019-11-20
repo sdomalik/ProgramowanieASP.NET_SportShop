@@ -8,6 +8,7 @@ namespace SportShop.Models
     public class EFProductRepository : IProductRepository
     {
         private readonly ApplicationDbContext ctx;
+        public IQueryable<Product> Products => ctx.Products;
         public EFProductRepository(ApplicationDbContext ctx)
         {
             this.ctx = ctx;
@@ -15,13 +16,21 @@ namespace SportShop.Models
 
         public void SaveProduct(Product product)
         {
+
             if (product.ProductId == 0)
             {
                 ctx.Products.Add(product);
             }
-            else
+            else if (product.ProductId != 0)
             {
-                ctx.Update(product);
+                Product productToChange = ctx.Products.SingleOrDefault(a => a.ProductId == product.ProductId);
+                if (productToChange != null)
+                {
+                    productToChange.Name = product.Name;
+                    productToChange.Description = product.Description;
+                    productToChange.Category = product.Category;
+                    productToChange.Price = product.Price;
+                }
             }
             ctx.SaveChanges();
         }
@@ -38,7 +47,6 @@ namespace SportShop.Models
             return product;
         }
 
-        public IQueryable<Product> Products => ctx.Products;
 
     }
 }
