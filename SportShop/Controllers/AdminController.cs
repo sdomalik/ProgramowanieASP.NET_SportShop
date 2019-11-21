@@ -24,6 +24,7 @@ namespace SportShop.Controllers
 
         public IActionResult Edit(int id)
         {
+            
             return View(_productRepository.Products.FirstOrDefault(a => a.ProductId == id));
         }
 
@@ -35,6 +36,7 @@ namespace SportShop.Controllers
                 _productRepository.SaveProduct(product);
                 TempData["ProductSaveSucces"] = "Product Saved";
             }
+            
             return RedirectToAction("Index", product);
         }
 

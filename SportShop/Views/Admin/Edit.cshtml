@@ -8,30 +8,28 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form asp-controller="Admin" asp-action="Save" asp-route-id="@Model.ProductId" method="post" >
+                <form asp-action="Save" method="post" >
                     <div class="form-group">
-                        <label asp-for="ProductId" hidden></label>
-                        <span asp-validation-for="ProductId" class="text-danger"></span>
                         <input asp-for="ProductId" class="form-control" type="hidden"/>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Name" class="custom-control-label">Produkt</label>
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <label asp-for="Name" >Produkt</label>
+                        <div><span asp-validation-for="Name" class="text-danger"></span></div>
                         <input asp-for="Name" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Description" class="custom-control-label">Opis</label>
-                        <span asp-validation-for="Description" class="text-danger"></span>
+                        <label asp-for="Description" >Opis</label>
+                        <div><span asp-validation-for="Description" class="text-danger"></span></div>
                         <input asp-for="Description" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Category" class="custom-control-label">Kategoria</label>
-                        <span asp-validation-for="Category" class="text-danger"></span>
+                        <label asp-for="Category" >Kategoria</label>
+                        <div><span asp-validation-for="Category" class="text-danger"></span></div>
                         <input asp-for="Category" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Price" class="custom-control-label">Cena</label>
-                        <span asp-validation-for="Price" class="text-danger"></span>
+                        <label asp-for="Price" >Cena</label>
+                        <div><span asp-validation-for="Price" class="text-danger"></span></div>
                         <input asp-for="Price" class="form-control" />
                     </div>
                     <div class="text-center">
