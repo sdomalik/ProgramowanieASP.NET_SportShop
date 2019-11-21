@@ -48,10 +48,8 @@ namespace SportShop.Controllers
         {
             Product _productDeleted = _productRepository.DeleteProduct(id);
 
-            if (_productDeleted != null)
-            {
-                TempData["ProductDeleteSucces"] = "Product Deleted";
-            }
+            TempData["ProductDeleteSucces"] = "Product Deleted";
+            
             return RedirectToAction("Index");
         }
 
