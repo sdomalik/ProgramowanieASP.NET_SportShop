@@ -10,8 +10,8 @@ namespace SportShop.Models
     {
         public int ProductId { get; set; }
 
-        [Display(Name= "Name")]
-        [Required(ErrorMessage = "Name must be given.")]
+        [StringLength(60, MinimumLength = 3)]
+        [Required(ErrorMessage ="Name is required")]
         public string Name { get; set; }
        
         [Required(ErrorMessage = "Description is required")]
