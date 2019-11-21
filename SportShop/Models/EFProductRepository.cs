@@ -16,7 +16,7 @@ namespace SportShop.Models
 
         public void SaveProduct(Product product)
         {
-
+            
             if (product.ProductId == 0)
             {
                 ctx.Products.Add(product);

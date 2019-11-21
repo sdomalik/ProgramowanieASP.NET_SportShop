@@ -19,6 +19,11 @@ namespace SportShop.Controllers
             return View();
         }
 
-        public ViewResult List() => View(repository.Manufacturers);
+        public ViewResult List() {
+
+            ViewBag.ActualPage = "ManufacturerList";
+            return View(repository.Manufacturers);
+        } 
+
     }
 }

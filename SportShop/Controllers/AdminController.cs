@@ -18,6 +18,7 @@ namespace SportShop.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.ActualPage = "Index";
             return View(_productRepository.Products);
         }
 

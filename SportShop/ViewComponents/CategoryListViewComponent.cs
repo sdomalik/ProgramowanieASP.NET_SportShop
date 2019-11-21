@@ -15,8 +15,7 @@ namespace SportShop.ViewComponents
         {
             this.db = ctx;
         }
-        public async Task<IViewComponentResult> InvokeAsync(
-            string category)
+        public async Task<IViewComponentResult> InvokeAsync(string category)
         {
             var categories = await GetCategoriesAsync();
             return View(categories);
