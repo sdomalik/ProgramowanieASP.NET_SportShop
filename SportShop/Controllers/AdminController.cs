@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportShop.Models;
 
 namespace SportShop.Controllers
 {
+
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly IProductRepository _productRepository;
