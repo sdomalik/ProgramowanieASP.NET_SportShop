@@ -28,8 +28,14 @@
                 <li class="nav-item">
                     <a class="nav-link " asp-controller="Manufacturer" asp-action="List">Manufacturers</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link @(ViewBag.ActualPage == "Index") ? active  :  " asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                <li class="nav-item dropdown" role="button">
+                    <a class="nav-link dropdown-toggle @(ViewBag.ActualPage == "Index") ? active  :  " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin Panel
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item " asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                        <a class="dropdown-item " asp-controller="Admin" asp-action="Create" >Add new product</a>
+                    </div>
                 </li>
             </ul>
         </div>
