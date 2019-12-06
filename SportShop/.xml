@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SportShop</name>
+    </assembly>
+    <members>
+        <member name="M:SportShop.Controllers.AdminController.Save(SportShop.Models.Product)">
+            <summary>
+            Saves a specific product
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportShop.Controllers.AdminController.Delete(System.Int32)">
+            <summary>
+            Delete a specific product
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportShop.Controllers.ProductController.List(System.String)">
+            <summary>
+            Views list of products by thier category
+            </summary>
+        </member>
+    </members>
+</doc>

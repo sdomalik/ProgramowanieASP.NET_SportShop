@@ -10,6 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SportShop.Models;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.IO;
 
 namespace SportShop
 {
@@ -33,6 +36,19 @@ namespace SportShop
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddTransient<IManufacturerRepository, EFManufacturerRepository>();
 
+            services.AddSwaggerGen(c =>
+            {
+
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+
+
+                c.IncludeXmlComments(string.Format(@"{0}\.xml",
+                           System.AppDomain.CurrentDomain.BaseDirectory));
+
+            });
+
+
+
             services.AddMvc();
         }
 
@@ -40,6 +56,7 @@ namespace SportShop
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseAuthentication();
+            app.UseSwagger();
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
@@ -50,9 +67,13 @@ namespace SportShop
             );*/
             app.UseMvc(routes => routes.MapRoute(
                 name: "default",
-                template: "{controller=Admin}/{action=Index}/{id?}"
+                template: "{controller=Product}/{action=List}/{id?}"
                 )
             );
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
             SeedData.EnsurePopulated(app);
         }
     }

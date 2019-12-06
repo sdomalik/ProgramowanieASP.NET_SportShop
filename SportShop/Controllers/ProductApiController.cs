@@ -7,26 +7,27 @@ using SportShop.Models;
 
 namespace SportShop.Controllers
 {
-    public class ProductController : Controller
+    [ApiController]
+    [Route("[apiController]")]
+    public class ProductApiController : Controller
     {
         private readonly IProductRepository repository;
-        public ProductController(IProductRepository repository)
+        public ProductApiController(IProductRepository productRepository)
         {
-            this.repository = repository;
+            this.repository = productRepository;
         }
+
         public IActionResult Index()
         {
             return View();
         }
 
-       
         [HttpGet]
-        public ViewResult List(string category)
+        public ActionResult List(string category)
         {
-            ViewBag.ActualPage = "ProductList";
-            ViewBag.ActualCategory = category;
-            return View(repository.Products.Where(a => a.Category == category));
+            return 
         }
+
 
     }
 }
