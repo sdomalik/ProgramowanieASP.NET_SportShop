@@ -31,11 +31,7 @@ namespace SportShop.Controllers
             return View(_productRepository.Products.FirstOrDefault(a => a.ProductId == id));
         }
 
-        /// <summary>
-        /// Saves a specific product
-        /// </summary>
-        /// <param name="product"></param>
-        /// <returns></returns>
+        
         [HttpPost]
         public IActionResult Save(Product product)
         {
@@ -53,11 +49,7 @@ namespace SportShop.Controllers
             return View("Edit", new Product());
         }
 
-        /// <summary>
-        /// Delete a specific product
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+      
         [HttpPost]
         public IActionResult Delete(int id)
         {
