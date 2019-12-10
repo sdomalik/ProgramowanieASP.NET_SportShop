@@ -10,11 +10,10 @@ using SportShop.Models.ViewModels;
 namespace SportShop.Controllers
 {
     [Authorize]
-
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private UserManager<IdentityUser> _userManager;
+        private SignInManager<IdentityUser> _signInManager;
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
@@ -26,26 +25,28 @@ namespace SportShop.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]
-
-        public IActionResult Login(string returnUrl = "")
+        public ViewResult Login(string returnUrl = "")
         {
-            var model = new LoginViewModel { ReturnUrl = returnUrl };
-            return View(model);
+            return View(new LoginViewModel
+            {
+                ReturnUrl = returnUrl
+            });
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                IdentityUser user = await _userManager.FindByNameAsync(model.Username);
+                IdentityUser user = await _userManager.FindByNameAsync(model.Name);
                 if (user != null)
                 {
                     await _signInManager.SignOutAsync();
                     if ((await _signInManager.PasswordSignInAsync(user, model.Password, false, false)).Succeeded)
                     {
-                        return Redirect(model?.ReturnUrl ?? "Admin/Index");
+                        return Redirect(model?.ReturnUrl ?? "/Admin/Index");
                     }
                 }
             }
@@ -53,21 +54,10 @@ namespace SportShop.Controllers
             return View(model);
         }
         
-        [HttpPost]
         public async Task<RedirectResult> Logout(string returnUrl = "/")
         {
             await _signInManager.SignOutAsync();
             return Redirect(returnUrl);
         }
-
-        /*[HttpGet]
-        public ViewResult Register()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Register(RegisterViewModel model)
-        {
-        }*/
     }
 }

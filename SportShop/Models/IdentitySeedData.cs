@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace SportShop.Models
 {
-    public class IdentitySeedData
+    public static class IdentitySeedData
     {
         private const string adminUser = "Admin";
-        private const string adminPassword = "Admin";
+        private const string adminPassword = "Secret123$";
 
-        public static async Task EnsurePopulated(UserManager<IdentityUser> userManager)
+        public static async Task EnsurePopulated(IApplicationBuilder app)
         {
+            UserManager<IdentityUser> userManager = app.ApplicationServices.GetRequiredService<UserManager<IdentityUser>>();
 
             IdentityUser user = await userManager.FindByIdAsync(adminUser);
             if (user == null)

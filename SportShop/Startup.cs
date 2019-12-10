@@ -55,16 +55,11 @@ namespace SportShop
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseAuthentication();
-            app.UseSwagger();
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            /*app.UseMvc(routes => routes.MapRoute(
-                name: "default",
-                template:"{controller=Product}/{action=List}/{id?}"
-                )                
-            );*/
+            app.UseAuthentication();
+            app.UseSwagger();
             app.UseMvc(routes => routes.MapRoute(
                 name: "default",
                 template: "{controller=Product}/{action=List}/{id?}"
@@ -75,6 +70,7 @@ namespace SportShop
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
             SeedData.EnsurePopulated(app);
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

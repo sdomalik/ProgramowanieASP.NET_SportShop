@@ -7,8 +7,6 @@ using SportShop.Models;
 
 namespace SportShop.Controllers
 {
-    [ApiController]
-    [Route("[apiController]")]
     public class ProductApiController : Controller
     {
         private readonly IProductRepository repository;
@@ -22,11 +20,11 @@ namespace SportShop.Controllers
             return View();
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public ActionResult List(string category)
         {
-            return 
-        }
+            return
+        }*/
 
 
     }
