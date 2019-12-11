@@ -21,7 +21,7 @@ namespace SportShop.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Product> Get() => repository.Products;
+        public IEnumerable<Product> List() => repository.Products;
 
         /// <summary>
         /// View single product by id
@@ -29,7 +29,7 @@ namespace SportShop.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public Product Get(int id) => repository.Products.FirstOrDefault(a => a.ProductId == id);
+        public Product GetById(int id) => repository.Products.FirstOrDefault(a => a.ProductId == id);
 
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace SportShop.Controllers
         /// <param name="product"></param>
         /// <returns></returns>
         [HttpPost]
-        public Product Post(Product product)
+        public ActionResult AddProduct(Product product)
         {
             if (ModelState.IsValid)
             {
@@ -51,27 +51,33 @@ namespace SportShop.Controllers
                 });
             }
 
-            return product;
+            return NoContent();
         }
 
-   /*     /// <summary>
-        /// Change data of products
+        /// <summary>
+        /// Edit product
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public Product Put(int id)
+        public ActionResult EditProduct(int id)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductId == id);
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                repository.SaveProduct(product);
+                return BadRequest();
+            }
+            if (product == null)
+            {
+                return BadRequest();
             }
 
+            repository.SaveProduct(product);        
 
-            return new Product { ProductId = product.ProductId };
-        }*/
+
+            return NoContent();
+        }
 
         /// <summary>
         /// Deletes product by id
@@ -79,15 +85,14 @@ namespace SportShop.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public Product Delete(int id)
+        public ActionResult Delete(int id)
         {
-            Product product = repository.Products.FirstOrDefault(p => p.ProductId == id);
-            if (ModelState.IsValid)
+            if (repository.Products.FirstOrDefault(p => p.ProductId == id) != null)
             {
                 repository.DeleteProduct(id);
             }
 
-            return product;
+            return NoContent();
         }
 
 

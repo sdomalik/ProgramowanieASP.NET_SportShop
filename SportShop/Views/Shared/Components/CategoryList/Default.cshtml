@@ -4,8 +4,8 @@
     <div class="row">
         @foreach (var category in Model)
         {
-            <div class="col-12 col-sm-4">
-                <div class="card">
+            <div class="col-12 col-lg-4">
+                <div class="card mb-2">
                     <a class="btn btn-lg btn-outline-dark @(ViewBag.ActualCategory == @category.ToString() ? "active" : "" ) " asp-controller="Product" asp-action="List" asp-route-category="@category">@category</a>
                 </div>
             </div>
