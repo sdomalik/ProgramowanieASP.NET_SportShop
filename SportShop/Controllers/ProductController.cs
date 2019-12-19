@@ -28,5 +28,11 @@ namespace SportShop.Controllers
             return View(repository.Products.Where(a => a.Category == category));
         }
 
+        [HttpGet]
+        public ViewResult ProductById(int id)
+        {
+            return View(repository.Products.Where(p => p.ProductId == id));
+        }
+
     }
 }
