@@ -31,7 +31,7 @@ namespace SportShop.Controllers
         [HttpGet]
         public ViewResult ProductById(int id)
         {
-            return View(repository.Products.Where(p => p.ProductId == id));
+            return View(repository.Products.SingleOrDefault(p => p.ProductId == id));
         }
 
     }
