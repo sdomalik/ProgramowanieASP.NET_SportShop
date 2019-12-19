@@ -39,9 +39,12 @@ namespace SportShop.Controllers
             {
                 _productRepository.SaveProduct(product);
                 TempData["ProductSaveSucces"] = "Product Saved";
+                return RedirectToAction("Index", product);  
             }
-            
-            return RedirectToAction("Index", product);
+            else
+            {
+                return View("Edit", product);
+            }
         }
 
         public IActionResult Create()
