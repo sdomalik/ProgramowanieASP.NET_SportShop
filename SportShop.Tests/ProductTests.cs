@@ -76,8 +76,8 @@ namespace SportShop.Tests
 
         [Theory]
         [InlineData(2, "Prod2")]
-        /*[InlineData(1, "Prod1")]
-        [InlineData(3, "Prod3")]*/
+        [InlineData(1, "Prod1")]
+        [InlineData(3, "Prod3")]
 
         public void CanGetProductById(int expectedId, string expectedName)
         {
@@ -128,7 +128,7 @@ namespace SportShop.Tests
 
         }
 
-        /*[Fact]
+        [Fact]
         public void CanDeleteProductById_ReturnsListWithOneProduct()
         {
             //Arrange
@@ -148,8 +148,12 @@ namespace SportShop.Tests
             var adminController = new AdminController(productMock.Object, manufacturerMock.Object);
 
             //Act
-            adminController.Delete(productMock.Object.Products.ElementAt(0).ProductId);
-        }*/
+            var result = adminController.Delete(productMock.Object.Products.ElementAt(0).ProductId);
+
+            //Assert
+            Assert.Null(result);
+
+        }
 
         [Fact]
         public void CanGetProductByDefunctId_ReturnsNull()

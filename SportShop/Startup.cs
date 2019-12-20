@@ -13,6 +13,7 @@ using SportShop.Models;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
+using SportShop.Filters;
 
 namespace SportShop
 {
@@ -49,7 +50,14 @@ namespace SportShop
 
 
 
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(MyActionFilter));
+                options.Filters.Add(typeof(MyAuthorizationFilter));
+                options.Filters.Add(typeof(MyResultFilter));
+                options.Filters.Add(typeof(MyExceptionFilter));
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,24 +4,39 @@
         <name>SportShop</name>
     </assembly>
     <members>
-        <member name="M:SportShop.Controllers.AdminController.Save(SportShop.Models.Product)">
+        <member name="M:SportShop.Controllers.ProductApiController.List">
             <summary>
-            Saves a specific product
+            View list of all products
             </summary>
-            <param name="product"></param>
             <returns></returns>
         </member>
-        <member name="M:SportShop.Controllers.AdminController.Delete(System.Int32)">
+        <member name="M:SportShop.Controllers.ProductApiController.GetById(System.Int32)">
             <summary>
-            Delete a specific product
+            View single product by id
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:SportShop.Controllers.ProductController.List(System.String)">
+        <member name="M:SportShop.Controllers.ProductApiController.AddProduct(SportShop.Models.Product)">
             <summary>
-            Views list of products by thier category
+            Add a new product
             </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportShop.Controllers.ProductApiController.EditProduct(System.Int32)">
+            <summary>
+            Edit product
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportShop.Controllers.ProductApiController.Delete(System.Int32)">
+            <summary>
+            Deletes product by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>
