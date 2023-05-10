@@ -16,5 +16,6 @@ namespace SportShop.Filters
         {
         }
         // tutaj moge dodac comment
+        // kolejny test
     }
 }
