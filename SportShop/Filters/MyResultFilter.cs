@@ -15,5 +15,6 @@ namespace SportShop.Filters
         public void OnResultExecuting(ResultExecutingContext context)
         {
         }
+        // tutaj moge dodac comment
     }
 }
